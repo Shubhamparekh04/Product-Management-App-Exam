@@ -1,32 +1,44 @@
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../redux/actions/productActions';
-import ProductItem from './ProductItem';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../features/products/productThunks";
+import ProductItem from "./ProductItem";
 
 const ProductList = () => {
-  const [search, setSearch] = useState('');
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { items, loading } = useSelector((state) => state.products);
+  const [sortOrder, setSortOrder] = useState(""); 
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
+
+  const sortedItems = [...items].sort((a, b) => {
+    if (sortOrder === "asc") return a.price - b.price;
+    if (sortOrder === "desc") return b.price - a.price;
+    return 0;
+  });
+
+  if (loading) return <h3>Loading...</h3>;
 
   return (
-    <div className="container mt-3">
-      <input
-        placeholder="Search..."
-        onChange={(e) => setSearch(e.target.value)}
-        className="form-control w-25  mb-3"
-      />
-      <div className="row">
-        {products
-          .filter((p) => p.title.toLowerCase().includes(search.toLowerCase()))
-          .map((product) => (
-            <ProductItem key={product.id} product={product} />
-          ))}
+    <>
+      <div className="d-flex justify-content-end mb-3">
+        <select
+          className="form-select w-auto"
+          onChange={(e) => setSortOrder(e.target.value)}
+        >
+          <option value="">Sort by Price</option>
+          <option value="asc">Low to High</option>
+          <option value="desc">High to Low</option>
+        </select>
       </div>
-    </div>
+
+      <div className="row">
+        {sortedItems.map((product) => (
+          <ProductItem key={product.id} product={product} />
+        ))}
+      </div>
+    </>
   );
 };
 

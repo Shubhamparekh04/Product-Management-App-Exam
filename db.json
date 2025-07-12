@@ -1,8 +1,23 @@
 {
-  "products": [],
+  "products": [
+    {
+      "id": "9daf",
+      "title": "Pariatur Qui quibus",
+      "price": "30",
+      "category": "Illo itaque praesent",
+      "image": "Officia tenetur ipsu"
+    },
+    {
+      "id": "17df",
+      "title": "Error reiciendis deb",
+      "price": "3",
+      "category": "Sint minim atque iu",
+      "image": "Voluptatem in recus"
+    }
+  ],
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "username": "admin",
       "password": "123"
     }

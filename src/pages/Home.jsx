@@ -11,11 +11,8 @@ const Home = () => {
           <h2>Welcome, {username || "User"} 👋</h2>
           <p className="text-muted">Manage your product inventory here.</p>
         </div>
-        <Link to="/add" className="btn btn-primary">
-          + Add Product
-        </Link>
+        <Link to="/add" className="btn btn-primary">+ Add Product</Link>
       </div>
-
       <ProductList />
     </div>
   );

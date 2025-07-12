@@ -9,10 +9,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/users?username=${form.username}&password=${form.password}`
-      );
-
+      const res = await axios.get(`http://localhost:5000/users?username=${form.username}&password=${form.password}`);
       if (res.data.length > 0) {
         sessionStorage.setItem("auth", "true");
         sessionStorage.setItem("username", res.data[0].username);
@@ -20,30 +17,18 @@ const Login = () => {
       } else {
         setError("Invalid username or password");
       }
-    } catch (err) {
-      setError("Error logging in");
+    } catch {
+      setError("Server error");
     }
   };
 
   return (
-    <div className="container mt-5 w-25 mx-auto">
+    <div className="container mt-5">
       <h2>Login</h2>
       {error && <div className="alert alert-danger">{error}</div>}
-      <input
-        className="form-control mb-2"
-        type="text"
-        placeholder="Username"
-        onChange={(e) => setForm({ ...form, username: e.target.value })}
-      />
-      <input
-        className="form-control mb-2"
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setForm({ ...form, password: e.target.value })}
-      />
-      <button className="btn btn-primary" onClick={handleLogin}>
-        Login
-      </button>
+      <input className="form-control mb-2" placeholder="Username" onChange={(e) => setForm({ ...form, username: e.target.value })} />
+      <input className="form-control mb-2" type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} />
+      <button className="btn btn-primary" onClick={handleLogin}>Login</button>
     </div>
   );
 };

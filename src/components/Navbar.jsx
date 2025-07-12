@@ -1,13 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const isAuthenticated = sessionStorage.getItem("auth") === "true";
+  const isAuthenticated = sessionStorage.getItem('auth') === 'true';
 
   const handleLogout = () => {
-    sessionStorage.removeItem("auth");
-    sessionStorage.removeItem("username");
-    navigate("/login");
+    sessionStorage.clear();
+    navigate('/login');
   };
 
   return (
