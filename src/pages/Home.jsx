@@ -6,12 +6,14 @@ const Home = () => {
 
   return (
     <div className="container mt-4">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <h2>Welcome, {username || "User"} 👋</h2>
-          <p className="text-muted">Manage your product inventory here.</p>
-        </div>
-        <Link to="/add" className="btn btn-primary">+ Add Product</Link>
+      <div className="bg-light p-4 rounded-3 mb-4 shadow-sm">
+        <h2 className="mb-0">Welcome, {username || "User"} 👋</h2>
+        <p className="text-muted mb-0">
+          Manage your product inventory with ease.
+        </p>
+        <Link to="/add" className="btn btn-success rounded-pill">
+          + Add Product
+        </Link>
       </div>
       <ProductList />
     </div>

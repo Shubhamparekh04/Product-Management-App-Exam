@@ -6,7 +6,7 @@ import ProductItem from "./ProductItem";
 const ProductList = () => {
   const dispatch = useDispatch();
   const { items, loading } = useSelector((state) => state.products);
-  const [sortOrder, setSortOrder] = useState(""); 
+  const [sortOrder, setSortOrder] = useState("");
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -22,9 +22,10 @@ const ProductList = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-end mb-3">
+      <div className="d-flex justify-content-end mb-4">
         <select
-          className="form-select w-auto"
+          className="form-select w-auto border-primary"
+          style={{ minWidth: "180px" }}
           onChange={(e) => setSortOrder(e.target.value)}
         >
           <option value="">Sort by Price</option>
@@ -32,7 +33,6 @@ const ProductList = () => {
           <option value="desc">High to Low</option>
         </select>
       </div>
-
       <div className="row">
         {sortedItems.map((product) => (
           <ProductItem key={product.id} product={product} />

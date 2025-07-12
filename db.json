@@ -1,18 +1,11 @@
 {
   "products": [
     {
-      "id": "9daf",
-      "title": "Pariatur Qui quibus",
-      "price": "30",
-      "category": "Illo itaque praesent",
-      "image": "Officia tenetur ipsu"
-    },
-    {
-      "id": "17df",
-      "title": "Error reiciendis deb",
-      "price": "3",
-      "category": "Sint minim atque iu",
-      "image": "Voluptatem in recus"
+      "id": "fdaa",
+      "title": "TV",
+      "price": "33",
+      "category": "Ut enim iure vitae s",
+      "image": "https://images-cdn.ubuy.co.in/67c16783dcab667e6d1ef1a8-samsung-32-class-fhd-1080p-smart-led.jpg"
     }
   ],
   "users": [
